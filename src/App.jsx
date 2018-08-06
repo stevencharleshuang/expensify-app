@@ -28,13 +28,22 @@ const HelpPage = () => (
   </div>
 );
 
+const NotFoundPage = () => (
+  <div>
+    404!
+  </div>
+);
+
 const App = () => {
   return(
     <div className="App">
-      <Route exact path="/" component={ExpenseDashboardPage} />
-      <Route path="/create" component={AddExpensePage} />
-      <Route path="/edit" component={EditExpensePage} />
-      <Route path="/help" component={HelpPage} />
+      <Switch>
+        <Route exact path="/" component={ExpenseDashboardPage} />
+        <Route path="/create" component={AddExpensePage} />
+        <Route path="/edit" component={EditExpensePage} />
+        <Route path="/help" component={HelpPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
     </div>
   );
 }

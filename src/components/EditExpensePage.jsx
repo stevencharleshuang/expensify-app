@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function EditExpensePage() {
+export default function EditExpensePage(props) {
   return (
     <div>
-      This is from Edit Expense Compy
+      Editing expense, id: {props.match.params.id}
     </div>
   );
 }

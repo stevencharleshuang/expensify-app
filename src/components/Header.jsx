@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-// Alternate ES6 Stateless Functional Component
+// Alternate ES6 Stateless Functional Component Syntax
 const Header = () => (
   <header>
     <h1>Expensify</h1>

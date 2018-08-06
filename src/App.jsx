@@ -6,6 +6,7 @@ import 'normalize.css/normalize.css';
 const App = () => {
   return(
     <div className="App">
+      Hello, Dave
     </div>
   );
 }

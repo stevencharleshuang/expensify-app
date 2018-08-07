@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
@@ -18,7 +19,6 @@ store.dispatch(setTextFilter('water'));
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
-
 console.log(visibleExpenses);
 
 const App = () => {
@@ -29,4 +29,4 @@ const App = () => {
   );
 }
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('app'));
+ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('app'));

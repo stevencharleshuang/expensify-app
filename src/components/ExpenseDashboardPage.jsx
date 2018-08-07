@@ -1,9 +1,10 @@
 import React from 'react';
+import ExpenseList from './ExpenseList';
 
 export default function ExpenseDashboardPage() {
   return(
     <div>
-      This is from Dashboard Compy
+      <ExpenseList />
     </div>
   );
 }

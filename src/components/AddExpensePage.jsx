@@ -1,9 +1,11 @@
 import React from 'react';
+import ExpenseForm from './ExpenseForm';
 
 export default function AddExpensePage() {
   return (
     <div>
-      This is from Add Expense Compy
+      <h1>Add Expense</h1>
+      <ExpenseForm />
     </div>
   );
 }

@@ -10,3 +10,6 @@ Reviewing React concepts by following Andrew Mead's React Tutorial:
 In Terminal, From Root Directory:
 * yarn install
 * yarn run dev
+
+In Browser:
+http://localhost:8080/

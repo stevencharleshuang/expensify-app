@@ -9,9 +9,9 @@ test('should add two numbers', () => {
 test('should inject argument into template literal', () => {
   const result = generateGreeting('Mike');
   expect(result).toBe('Hello Mike!');
-})
+});
 
 test('should generate greeting for no name', () => {
   const result = generateGreeting();
   expect(result).toBe('Hello Anonymous!');
-})
+});

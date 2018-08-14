@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import moment from 'moment';
 import ExpenseForm from '../../components/ExpenseForm';
 import toJSON from 'enzyme-to-json'
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 import expenses from '../fixtures/expenses';
-
 
 test('should render expense form correctly', () => {
   const wrapper = shallow(<ExpenseForm />);
@@ -14,6 +14,42 @@ test('should render expense form correctly', () => {
 test('should render expense form correctly with expense data', () => {
   const wrapper = shallow(<ExpenseForm expense={expenses[1]} />);
   expect(wrapper).toMatchSnapshot();
+});
+
+test('should call onSubmit prop for valid form submission', () => {
+  const onSubmitSpy = jest.fn();
+  const wrapper = shallow(
+    <ExpenseForm
+      expense={expenses[0]}
+      onSubmit={onSubmitSpy}
+    />
+  );
+  wrapper.find('form').simulate('submit', {
+    preventDefault: () => {}
+  });
+  expect(wrapper.state('error')).toBe('');
+  expect(onSubmitSpy).toHaveBeenLastCalledWith({
+    description: expenses[0].description,
+    amount: expenses[0].amount,
+    createdAt: expenses[0].createdAt,
+    note: expenses[0].note
+  });
+  // onSubmitSpy('Steve', 'NYC');
+  // expect(onSubmitSpy).toHaveBeenCalledWith('Steve', 'NYC');
+});
+
+test('should set new date on date change', () => {
+  const now = moment()
+  const wrapper = shallow(<ExpenseForm />);
+  wrapper.find('[onDateChange]').prop('onDateChange')(now);
+  expect(wrapper.state('createdAt')).toEqual(now);
+});
+
+test('should set calendar focus on change', () => {
+  const focused = true;
+  const wrapper = shallow(<ExpenseForm />);
+  wrapper.find('[onDateChange]').prop('onFocusChange')({ focused });
+  expect(wrapper.state('calendarFocused')).toBe(focused)
 });
 
 test('should render error for invalid form submission', () => {
